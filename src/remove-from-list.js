@@ -23,55 +23,25 @@ const { ListNode } = require('../extensions/list-node.js');
  * }
  */
 function removeKFromList(l, k) {
-  throw new NotImplementedError('Not implemented');
+  //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
-/*
-  function removeAt(position)
-  let length = l.length;
-  let head = l[0];
+  let dummy = new ListNode(-1);
+  dummy.next = l;
+  let previous = dummy;
+  let current = l;
 
-    if(position<0 || position>=this.length){
-      return null;
-    } 
-
-    let current = head;
-
-    if(position===0){
-      head = current.next;
-    } else {
-      let prev = null;
-      let index = 0;
-
-      while (index < position) {
-        prev = current;
-        current = current.next;
-        index++;
-      }
-      prev.next = current.next;
+  while(current){
+    if(current.value === k){
+      previous.next=current.next;
+      current=current.next;
     }
-
-    this.length--;
-    return current.value;
-
-  }
-  function remove(element) {
-    this.removeAt( IndexOf(element) );
+    else{
+      previous=current;
+      current=current.next;
+    }   
   }
 
-  function indexOf(element){
-    let current = l[0];
-    let index = 0;
-
-    while(current){
-      if(current.value === element) {
-        return index;
-      }
-      current = current.next;
-      index++;
-    }
-
-    return -1;
-    */
+  return dummy.next;
   }
 
 
